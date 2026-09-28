@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const API_BASE = "https://mansik-santulan-score.onrender.com";
+  const API_BASE = "https://mental-health-score-hmli.onrender.com";
 
   const form = document.getElementById("predict-form");
   const submitBtn = document.getElementById("submit-btn");
@@ -294,11 +294,28 @@
     el.addEventListener("change", () => clearFieldError(el));
   });
 
-  resetBtn.addEventListener("click", () => {
-    showState("idle");
-  });
+  // Run another read
+resetBtn.addEventListener("click", () => {
+    form.reset();
 
-  errorRetryBtn.addEventListener("click", () => {
+    // Reset stress level
+    stressHiddenInput.value = "";
+
+    segGroup.querySelectorAll(".seg-btn").forEach((btn) => {
+        btn.classList.remove("active");
+    });
+
+    clearAllErrors();
+    setSubmitting(false);
+
     showState("idle");
-  });
+});
+
+// Try again after an error
+errorRetryBtn.addEventListener("click", () => {
+    clearAllErrors();
+    setSubmitting(false);
+
+    showState("idle");
+});
 })();

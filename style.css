@@ -356,8 +356,16 @@ input:invalid:not(:placeholder-shown):not(:focus) {
   gap: 6px;
 }
 
-.state { width: 100%; display: flex; flex-direction: column; align-items: center; }
+.state {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.state[hidden] {
+  display: none !important;
+}
 /* gauge */
 .gauge { width: 100%; max-width: 260px; overflow: visible; margin-bottom: 8px; }
 .gauge-track {
